@@ -10,7 +10,7 @@ const PokemonList = ({ searchQuery }) => {
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=50');
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon');
         const promises = response.data.results.map(pokemon => axios.get(pokemon.url));
         const results = await Promise.all(promises);
         setPokemonList(results.map(result => result.data));
